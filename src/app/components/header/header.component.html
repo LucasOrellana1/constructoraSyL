@@ -1,0 +1,63 @@
+<nav class="bg-blue-950 text-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <div class="text-lg">
+        <a href="#" class="text-white">Constructora SYL</a>
+      </div>
+
+      <!-- Links -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#services" class="hover:text-yellow-400 transition duration-300">Servicios</a>
+        <a href="#about" class="hover:text-yellow-400 transition duration-300">Sobre Nosotros</a>
+        <a href="#contact" class="hover:text-yellow-400 transition duration-300">Contacto</a>
+      </div>
+
+      <!-- Botón de llamada a la acción -->
+      <div class="hidden md:block">
+        <a href="#quote" class="bg-copper text-white py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-300">
+          Contáctanos
+        </a>
+      </div>
+
+      <!-- Menú móvil -->
+      <div class="md:hidden">
+        <button class="text-white focus:outline-none" (click)="toggleMenu()">
+          <!-- Icono del menú (hamburguesa) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú móvil desplegable -->
+  <div v-if="isMenuOpen" class="md:hidden">
+    <a href="#services" class="block px-4 py-2 text-sm text-white hover:bg-yellow-500">Servicios</a>
+    <a href="#about" class="block px-4 py-2 text-sm text-white hover:bg-yellow-500">Sobre Nosotros</a>
+    <a href="#contact" class="block px-4 py-2 text-sm text-white hover:bg-yellow-500">Contacto</a>
+    <a href="#quote" class="block px-4 py-2 text-sm bg-copper text-white text-center rounded hover:bg-yellow-400 transition duration-300">
+      Contáctanos
+    </a>
+  </div>
+</nav>
+
+<header class="bg-blue-900 text-white py-24">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mb-8">
+      <!-- <img src="path/to/logo.png" alt="Logo de Constructora SYL" class="mx-auto h-24 mb-4"> -->
+      <h1 class="text-5xl font-extrabold mb-6">Bienvenidos a Constructora SYL</h1>
+      <p class="text-xl mb-8">
+        Expertos en soluciones integrales de construcción, eficiencia energética y retiros de asbestos. Construimos un futuro más sostenible y seguro para nuestros clientes.
+      </p>
+    </div>
+    
+    <div>
+      <!-- Botón de llamada a la acción -->
+      <a href="#quote" class="bg-copper text-white py-3 px-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300">
+        Contáctanos
+      </a>
+    </div>
+  </div>
+</header>

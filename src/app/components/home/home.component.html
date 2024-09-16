@@ -1,0 +1,25 @@
+<app-header></app-header>
+<!-- Sección de Servicios -->
+<section class="bg-background py-24">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center mb-8 text-primary">Nuestros Servicios</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Servicio 1 -->
+      <div *ngFor="let serv of services" class="flex flex-col bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <img src="{{ serv.path }}" alt="Construcción" class="h-16 mx-auto mb-4">
+        <h3 class="text-xl font-bold text-primary mb-2 text-center">{{serv.name}}</h3>
+        <p class="flex flex-col justify-center min-h-20 text-gray-600 text-center">
+          {{serv.desc}}
+        </p>
+        <button (click)="viewMore()" class="mt-2 px-4 py-2 bg-copper hover:bg-yellow-500 text-white rounded transition-colors duration-300">Ver Más</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <app-contact-form></app-contact-form>
+
+  <app-footer></app-footer>

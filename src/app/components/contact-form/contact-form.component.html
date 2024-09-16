@@ -1,0 +1,87 @@
+<section class="bg-background py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
+      <!-- Tarjeta: Quiénes Somos -->
+      <div class="flex-1 bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-primary mb-6 text-center">Quiénes Somos</h2>
+        <p class="text-gray-700 text-center mb-8">
+          En [Nombre de la Empresa], somos líderes en la construcción con una trayectoria de más de [X] años. Nos especializamos en proyectos de gran escala, eficiencia energética con colectores solares y la remoción segura de asbestos.
+        </p>
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Misión -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-primary mb-4 text-center">Nuestra Misión</h3>
+            <p class="text-gray-600 text-center">
+              Ofrecemos soluciones de construcción innovadoras y sostenibles, garantizando la satisfacción total de nuestros clientes con un enfoque profesional y personalizado.
+            </p>
+          </div>
+
+          <!-- Valores -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-primary mb-4 text-center">Nuestros Valores</h3>
+            <ul class="list-disc list-inside text-gray-600 text-center">
+              <li>Compromiso con la Calidad</li>
+              <li>Transparencia y Honestidad</li>
+              <li>Responsabilidad Ambiental</li>
+              <li>Innovación Constante</li>
+            </ul>
+          </div>
+        </div>
+      <!--   <div class="mt-8 text-center">
+          <a href="#contact" class="bg-primary text-white py-3 px-6 rounded-lg shadow-md hover:bg-primary-dark transition duration-300 ease-in-out">
+            Contáctanos
+          </a>
+        </div> -->
+      </div>
+
+      <!-- Tarjeta: Contacto -->
+      <div class="flex-1 bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-primary mb-6 text-center">¡Contáctanos!</h2>
+        <p class="text-gray-600 text-center mb-8">
+          ¿Tienes preguntas o quieres saber más sobre nuestros servicios? Envíanos un mensaje y nos pondremos en contacto contigo.
+        </p>
+
+        <!-- Formulario de contacto -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input type="text" id="name" formControlName="name" placeholder="Ingresa tu nombre"
+                   class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary">
+            <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              El nombre es obligatorio y debe tener al menos 3 caracteres.
+            </div>
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+            <input type="email" id="email" formControlName="email" placeholder="Ingresa tu correo electrónico"
+                   class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary">
+            <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              Debes ingresar un correo electrónico válido.
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700">Mensaje</label>
+            <textarea id="message" formControlName="message" rows="5" placeholder="Escribe tu mensaje"
+                      class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-primary"></textarea>
+            <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              El mensaje es obligatorio y debe tener al menos 10 caracteres.
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit"
+                    class="w-full bg-primary text-white py-3 px-6 rounded-lg shadow-lg hover:bg-primary-dark transition duration-300"
+                    [disabled]="contactForm.invalid">
+              Enviar Mensaje
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
