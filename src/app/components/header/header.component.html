@@ -8,17 +8,15 @@
 
       <!-- Links -->
       <div class="hidden md:flex space-x-8">
-        <a href="#services" class="hover:text-yellow-400 transition duration-300">Servicios</a>
-        <a href="#about" class="hover:text-yellow-400 transition duration-300">Sobre Nosotros</a>
-        <a href="#contact" class="hover:text-yellow-400 transition duration-300">Contacto</a>
+        <button (click)="scrollTo('services')" class="hover:text-yellow-400 transition duration-300">Servicios</button>
+        <button (click)="scrollTo('contact')" class="hover:text-yellow-400 transition duration-300">Sobre Nosotros</button>
+        <button (click)="scrollTo('contact')" class="hover:text-yellow-400 transition duration-300">Contacto</button>
       </div>
 
       <!-- Botón de llamada a la acción -->
-      <div class="hidden md:block">
-        <a href="#quote" class="bg-copper text-white py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-300">
-          Contáctanos
-        </a>
-      </div>
+<!--       <button (click)="scrollTo('contact')" class="hidden bg-copper text-white py-2 px-4 rounded-lg hover:bg-yellow-400 transition duration-300">
+        Contáctanos
+      </button> -->
 
       <!-- Menú móvil -->
       <div class="md:hidden">
@@ -33,18 +31,19 @@
   </div>
 
   <!-- Menú móvil desplegable -->
-  <div v-if="isMenuOpen" class="md:hidden">
-    <a href="#services" class="block px-4 py-2 text-sm text-white hover:bg-yellow-500">Servicios</a>
-    <a href="#about" class="block px-4 py-2 text-sm text-white hover:bg-yellow-500">Sobre Nosotros</a>
-    <a href="#contact" class="block px-4 py-2 text-sm text-white hover:bg-yellow-500">Contacto</a>
-    <a href="#quote" class="block px-4 py-2 text-sm bg-copper text-white text-center rounded hover:bg-yellow-400 transition duration-300">
-      Contáctanos
-    </a>
+  <div *ngIf="isMenuOpen" class="md:hidden flex flex-col items-end mx-4 mt-4 p-4 rounded-lg shadow-lg">
+    <button (click)="scrollTo('services')" class="menu-item hover:text-yellow-400 transition duration-300">Servicios</button>
+    <button (click)="scrollTo('contact')" class="menu-item hover:text-yellow-400 transition duration-300">Sobre Nosotros</button>
+    <button (click)="scrollTo('contact')" class="menu-item hover:text-yellow-400 transition duration-300">Contacto</button>
   </div>
 </nav>
 
-<header class="bg-blue-900 text-white py-24">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<header  class="relative bg-cover bg-center bg-fixed text-white py-24"
+        style="background-image: url('../../../assets/img/bannerS.png');">
+
+  <div class="absolute inset-0 bg-gray-800 opacity-25"></div>
+
+  <div class="relative  mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
     <div class="mb-8">
       <!-- <img src="path/to/logo.png" alt="Logo de Constructora SYL" class="mx-auto h-24 mb-4"> -->
       <h1 class="text-5xl font-extrabold mb-6">Bienvenidos a Constructora SYL</h1>
@@ -53,11 +52,10 @@
       </p>
     </div>
     
-    <div>
-      <!-- Botón de llamada a la acción -->
-      <a href="#quote" class="bg-copper text-white py-3 px-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300">
-        Contáctanos
-      </a>
-    </div>
+    <!-- Botón de llamada a la acción -->
+    <button (click)="scrollTo('contact')" class="bg-copper text-white py-3 px-6 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300">
+      Contáctanos
+    </button>
+    
   </div>
 </header>

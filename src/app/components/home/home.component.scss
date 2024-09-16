@@ -1,0 +1,5 @@
+.thumbnail-image {
+    width: 200px;          /* Establece el tamaño deseado para las miniaturas */
+    height: 100px;         /* Asegura que todas las miniaturas sean del mismo tamaño */
+    object-fit: cover;     /* Asegura que la imagen cubra el contenedor sin distorsionar */
+  }

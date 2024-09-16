@@ -1,25 +1,48 @@
 <app-header></app-header>
 <!-- Sección de Servicios -->
-<section class="bg-background py-24">
+<section id="services" class="bg-background pt-16">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-3xl font-bold text-center mb-8 text-primary">Nuestros Servicios</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Servicio 1 -->
-      <div *ngFor="let serv of services" class="flex flex-col bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <img src="{{ serv.path }}" alt="Construcción" class="h-16 mx-auto mb-4">
+      <div *ngFor="let serv of services; let i = index" class="flex flex-col bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <img src="{{ serv.svg }}" alt="Construcción" class="h-16 mx-auto mb-4">
         <h3 class="text-xl font-bold text-primary mb-2 text-center">{{serv.name}}</h3>
         <p class="flex flex-col justify-center min-h-20 text-gray-600 text-center">
           {{serv.desc}}
         </p>
-        <button (click)="viewMore()" class="mt-2 px-4 py-2 bg-copper hover:bg-yellow-500 text-white rounded transition-colors duration-300">Ver Más</button>
+        <button (click)="viewMore(i)" class="mt-2 px-4 py-2 bg-copper hover:bg-yellow-500 text-white rounded transition-colors duration-300">Ver Más</button>
       </div>
     </div>
   </div>
 </section>
 
+<div id="gallery" *ngIf="gallery != null" class="flex justify-center bg-background  md:p-10">
+
+  <div id="galleryCard" class="max-w-4xl bg-white rounded-lg shadow-md overflow-hidden mx-4 xs:mx-6 mt-6 lg:mx-8">
+    
+    <div class="p-6">
+      <!-- Imagen grande -->
+      <div class="mb-6">
+        <img [src]="selectedImage" alt="Imagen Grande" class="w-full h-auto rounded-lg shadow-md">
+      </div>
+
+      <!-- Miniaturas en una cuadrícula -->
+      <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <img *ngFor="let image of currentService.img" [src]="image" (click)="onThumbnailClick(image)"
+             [class.border-2]="image === selectedImage" class="thumbnail-image cursor-pointer w-full h-auto rounded-lg shadow-sm transition-transform transform hover:scale-105">
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
 
 
-  <app-contact-form></app-contact-form>
 
-  <app-footer></app-footer>
+<app-wh-button></app-wh-button>
+
+<app-contact-form id="contact"></app-contact-form>
+
+<app-footer></app-footer>

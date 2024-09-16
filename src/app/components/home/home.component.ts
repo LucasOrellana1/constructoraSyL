@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactFormComponent } from '../contact-form/contact-form.component';
 import { FooterComponent } from '../footer/footer.component';
+import { WhButtonComponent } from '../wh-button/wh-button.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, ContactFormComponent, CommonModule,  ReactiveFormsModule, FooterComponent
+  imports: [HeaderComponent, ContactFormComponent, CommonModule,  ReactiveFormsModule, FooterComponent, WhButtonComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -16,6 +17,13 @@ import { FooterComponent } from '../footer/footer.component';
 export class HomeComponent {
 
   contactForm!: FormGroup;
+  gallery: number | null = null;
+  currentService:any
+  selectedImage:string = ''
+
+  // prefix asses
+  assetPrefix:String = '../../../assets';
+
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
@@ -25,15 +33,76 @@ export class HomeComponent {
     });
   }
 
-  services:{name:string, desc:string, path:string}[] = [
-    {name: "Construcción", desc: "Ofrecemos servicios de construcción completos, desde la planificación hasta la finalización.", path: "../../../assets/icons/construction.svg"},
-    {name: "Eficiencia Energética", desc: "Instalamos colectores solares y ofrecemos soluciones para mejorar la eficiencia energética.", path: "../../../assets/icons/solar.svg"},
-    {name: "Retiros de Asbestos", desc: "Especialistas en la eliminación segura y eficiente de asbestos.", path: "../../../assets/icons/truck.svg"},
+  services:{name:string, desc:string, svg:string}[] = [
+    { name: "Construcción", 
+      desc: "Ofrecemos servicios de construcción completos, desde la planificación hasta la finalización.", 
+      svg: this.assetPrefix + "/icons/construction.svg",
+    },
+    { name: "Eficiencia Energética", 
+      desc: "Instalamos colectores solares y ofrecemos soluciones para mejorar la eficiencia energética.", 
+      svg: this.assetPrefix + "/icons/solar.svg",
+    },
+    { name: "Retiros de Asbestos",
+       desc: "Especialistas en la eliminación segura y eficiente de asbestos.",
+       svg: this.assetPrefix + "/icons/truck.svg",
+    },
 
   ]
 
-  viewMore(){
+  scrolltoGallery(){
+    setTimeout(() => {
+      document.getElementById('gallery')!.scrollIntoView({
+        behavior: 'smooth'  // Hace que el scroll sea suave
+      });  
+    }, 200)
+  }
 
+  async viewMore(type: number){
+    this.gallery = type
+    
+    switch(this.gallery){
+      case 0:
+        this.currentService = {
+          name: this.services[0].name,
+          img: this.loadImages('consImg/cons')
+        }
+        this.selectedImage = this.currentService.img[0]
+        this.scrolltoGallery()
+        break
+      case 1:
+        this.currentService = {
+          name: this.services[1].name,
+          img: this.loadImages('solImg/sol')
+        }
+        this.selectedImage = this.currentService.img[0]
+        this.scrolltoGallery()
+        break
+      case 2:
+        this.currentService = {
+          name: this.services[2].name,
+          img: this.loadImages('asbImg/asb')
+        }
+        this.selectedImage = this.currentService.img[0]
+        this.scrolltoGallery()
+        break
+      }
+  }
+
+  loadImages(route:string) {
+    const imageCount = 2; // Cambia esto según el número de imágenes
+    const images = []
+    for (let i = 1; i <= imageCount; i++) {
+      images.push(this.assetPrefix + `/img/${route}${i}.jpg`);
+    }
+    return images
+  } 
+
+  onThumbnailClick(image: string): void {
+    this.selectedImage = image;
+  }
+
+  close(){
+    this.gallery = null;   
   }
 
   onSubmit(){

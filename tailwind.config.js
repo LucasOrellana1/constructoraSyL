@@ -13,6 +13,9 @@ module.exports = {
         'warning': '#E74C3C', // Rojo Seguridad
         'background': '#ECF0F1', // Blanco Neutro
       },
+      screens: {
+        'xs': '480px', // Ejemplo de punto de interrupción personalizado
+      },
     },
   },
   plugins: [],
