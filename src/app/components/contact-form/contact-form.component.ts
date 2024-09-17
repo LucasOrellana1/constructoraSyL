@@ -36,10 +36,10 @@ export class ContactFormComponent {
     // Aquí haces la solicitud HTTP para enviar los datos
       this.http.post('https://email-api-3n5v.vercel.app/send-email', formData).subscribe(response => {
         console.log("Response: ", response)
+        window.location.reload();
       }, error => {
         console.log('Error: ', error)
       })
-
     }
   }
 }
