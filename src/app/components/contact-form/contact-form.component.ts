@@ -8,19 +8,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';  // Opcional si quieres usar íconos
 import { MatCardModule } from '@angular/material/card';  // Opcional
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatCardModule],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatIconModule, MatCardModule],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss'
 })
 export class ContactFormComponent {
   contactForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private http:HttpClient) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -33,12 +33,13 @@ export class ContactFormComponent {
       const formData = this.contactForm.value;
       console.log('Formulario enviado:', formData);
 
-    /*   // Aquí haces la solicitud HTTP para enviar los datos
-      this.http.post('https://your-backend-api.com/contact', formData)
-        .subscribe(
-          response => console.log('Mensaje enviado con éxito', response),
-          error => console.error('Error al enviar el mensaje', error)
-        ); */
+    // Aquí haces la solicitud HTTP para enviar los datos
+      this.http.post('https://email-api-3n5v.vercel.app/send-email', formData).subscribe(response => {
+        console.log("Response: ", response)
+      }, error => {
+        console.log('Error: ', error)
+      })
+
     }
   }
 }

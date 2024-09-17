@@ -38,7 +38,7 @@
         </p>
 
         <!-- Formulario de contacto -->
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <form [formGroup]="contactForm" class="space-y-6">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
             <input type="text" id="name" formControlName="name" placeholder="Ingresa tu nombre"
@@ -70,7 +70,7 @@
           </div>
 
           <div class="text-center">
-            <button type="submit"
+            <button (click)="onSubmit()"
                     class="w-full bg-primary text-white py-3 px-6 rounded-lg shadow-lg hover:bg-primary-dark transition duration-300"
                     [disabled]="contactForm.invalid"
                     [ngClass]="{

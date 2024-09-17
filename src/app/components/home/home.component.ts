@@ -6,6 +6,9 @@ import { ContactFormComponent } from '../contact-form/contact-form.component';
 import { FooterComponent } from '../footer/footer.component';
 import { WhButtonComponent } from '../wh-button/wh-button.component';
 
+import { environment } from '../../../env/enviroment';
+
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -22,7 +25,6 @@ export class HomeComponent {
   selectedImage:string = ''
 
   // prefix asses
-  assetPrefix:String = '../../../assets';
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -36,15 +38,15 @@ export class HomeComponent {
   services:{name:string, desc:string, svg:string}[] = [
     { name: "Construcción", 
       desc: "Ofrecemos servicios de construcción completos, desde la planificación hasta la finalización.", 
-      svg: this.assetPrefix + "/icons/construction.svg",
+      svg: `${environment.assetPrefix}/assets/icons/construction.svg`,
     },
     { name: "Eficiencia Energética", 
       desc: "Instalamos colectores solares y ofrecemos soluciones para mejorar la eficiencia energética.", 
-      svg: this.assetPrefix + "/icons/solar.svg",
+      svg: `${environment.assetPrefix}/assets/icons/solar.svg`,
     },
     { name: "Retiros de Asbestos",
        desc: "Especialistas en la eliminación segura y eficiente de asbestos.",
-       svg: this.assetPrefix + "/icons/truck.svg",
+       svg: `${environment.assetPrefix}/assets/icons/truck.svg`,
     },
 
   ]
@@ -92,7 +94,7 @@ export class HomeComponent {
     const imageCount = 2; // Cambia esto según el número de imágenes
     const images = []
     for (let i = 1; i <= imageCount; i++) {
-      images.push(this.assetPrefix + `/img/${route}${i}.jpg`);
+      images.push(`${environment.assetPrefix}/assets/img/${route}${i}.jpg`);
     }
     return images
   } 

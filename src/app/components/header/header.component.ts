@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { environment } from '../../../env/enviroment';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
 
   isMenuOpen:boolean = false; 
-
+  imgBanner:string = `${environment.assetPrefix}/assets/img/bannerS.png`;
+  
   toggleMenu(){
     if(this.isMenuOpen){
       this.isMenuOpen = false
