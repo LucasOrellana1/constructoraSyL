@@ -107,7 +107,4 @@ export class HomeComponent {
     this.gallery = null;   
   }
 
-  onSubmit(){
-
-  }
 }
